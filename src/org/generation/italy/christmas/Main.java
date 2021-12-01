@@ -1,6 +1,7 @@
 package org.generation.italy.christmas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -32,10 +33,25 @@ public class Main {
 
 		System.out.println("Ecco la tua lista: ");
 
+		Collections.sort(wishlist);
 		for (int i = 0; i < wishlist.size(); i++) {
 			System.out.println(wishlist.get(i));
 		}
-
+		
+		System.out.println("Inserisci il tuo nome: ");
+		String nome = scanner.nextLine();
+		System.out.println("Inserisci il tuo indirizzo: ");
+		String indirizzo = scanner.nextLine();
+		
+		
+		LetteraBabboNatale lettera = new LetteraBabboNatale (nome, indirizzo, wishlist);
+		
+		try {
+			System.out.println(lettera.invia());
+		} catch (Exception a) {
+			System.out.println("Errore: " + a.getMessage());
+		}
+		
 		scanner.close();
 	}
 
